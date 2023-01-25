@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Beau+Rivage&family=Oswald:wght@600&family=Zen+Kurenaido&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.png" type="favicon.png">
+    <title>Tiempo Para El Verano</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0 auto;
+    
+            background-color: transparent;
+            text-align: center;
+            font-family: 'Beau Rivage', cursive;
+            font-family: 'Oswald', sans-serif;
+            font-family: 'Zen Kurenaido', sans-serif;
+    
+            -webkit-appearance:none;
+            align-content: center;
+        }
+        header {
+            padding-top: 10vh;
+        }
+        h1, h2, h3 {
+            margin: 0;
+        }
+        h1 {
+            color: #77dd77;
+            font-size: 8vh;
+        }
+        h2 {
+            color: #ff6961;
+            font-size: 5vh;
+        }
+        h3 {
+            color: #ff6961;
+            font-size: 4vh;
+        }
+    
+        div {
+            background-color: #fdcae1;
+            border: #fdcae1 0.5vh solid;
+            border-radius: 1vh;
+            width: 40vh;
+            width: fit-content;
+        }
+
+        p {
+            display: onblock;
+            color: #fdfd96;
+            font-size: larger;
+            display: inline-block;
+            background-color: #84b6f4;
+            border: black, 6px, solid;
+            border-radius: 0.5vh;
+            text-align: center;
+            padding: 1vh;
+            font-size: 6vh;
+            margin: 0.5vh;
+            min-width: 8vh;
+        }
+
+        a {
+            font-size: 40vh;
+            display: block;
+        }
+
+        button {
+            border: #ff6961 0.5vh solid;
+            border-radius: 30%;
+            margin: 4%;
+            padding: 5%;
+            font-size: 6vh;
+            color: #fdfd96;
+            min-width: 15vh;
+        }
+        button:hover {
+            background-color: #ff6961;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h2>TIEMPO PARA:</h2>
+        <h1>VACACIONES 🏖️</h1>
+    </header>
+    <br>
+    <br>
+    <div>
+        <p class="sitio" id="1"></p>
+        <p class="sitio" id="2"></p>
+        <p class="sitio" id="3"></p>
+        <p class="sitio" id="4"></p>
+    </div>
+</body>
+
+<script>
+    const DiaD = new Date('6/10/2023 0:00');
+    const milisegundos_minuto = 1000 * 60;
+    const milisegundos_hora = 1000 * 60 * 60;
+    const milisegundos_dia = 1000 * 60 * 60 * 24;
+
+    function update() {
+        var Ahora = new Date();
+        var tiempo = DiaD - Ahora;
+        var dias_faltantes = Math.floor(tiempo / milisegundos_dia);
+        var horas_faltantes = Math.floor((tiempo % milisegundos_dia) / milisegundos_hora);
+        var minutos_faltantes = Math.floor((tiempo % milisegundos_hora) / milisegundos_minuto);
+        var segundos_faltantes = Math.floor((tiempo % milisegundos_minuto) / 1000);
+
+        document.getElementById("1").textContent = dias_faltantes < 10 ? "0" + dias_faltantes : dias_faltantes;
+        document.getElementById("2").textContent = horas_faltantes < 10 ? "0" + horas_faltantes : horas_faltantes;
+        document.getElementById("3").textContent = minutos_faltantes < 10 ? "0" + minutos_faltantes : minutos_faltantes;
+        document.getElementById("4").textContent = segundos_faltantes < 10 ? "0" + segundos_faltantes : segundos_faltantes;
+    
+        if(tiempo <= 0){
+            var pregunta = document.createElement('p');
+            pregunta.textContent = 'WOOWWWWWWWWW';
+        }
+    }
+
+    update();
+    setInterval(update, 1000);
+</script>
+</html>
